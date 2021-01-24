@@ -9,8 +9,8 @@ const Input = styled.input`
   background: ${colors.white};
   padding: 0.125rem;
   outline: 0;
-  width: 320px;
-  height: 60px;
+  width: 100%;
+  height: 40px;
   color: ${colors.bluePrimary};
   font-family: ${fontFamily};
   font-size: 1.125rem;
