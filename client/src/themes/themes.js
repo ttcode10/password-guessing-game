@@ -9,6 +9,7 @@ export const colors = {
   white: '#FFFFFF',
   black: '#333333',
   green: '#81BD3E',
+  red: '#CE0E2D',
 };
 
 export const fontFamily =
