@@ -17,15 +17,11 @@ const getHighlightNumber = (password, answer) => {
   const passwordStringToArray = password.split('');
   const answerStringToArray = answer.split('');
   const highlight = [];
-
-  passwordStringToArray.map((passwordNumber) => {
-    for (const answerNumber of answerStringToArray) {
-      if (answerNumber === passwordNumber) {
-        highlight.push(answerNumber);
-      }
+  for (let i = 0; i < passwordStringToArray.length; i++) {
+    if (passwordStringToArray[i] === answerStringToArray[i]) {
+      highlight.push(passwordStringToArray[i]);
     }
-  });
-
+  }
   return { highlight };
 };
 
