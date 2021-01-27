@@ -1,6 +1,6 @@
 # Project preview
-![alt text](https://ibb.co/Tk00yTp)
-![alt text](https://ibb.co/b1CZKP2)
+![Web version](https://i.ibb.co/yXkk2RG/Web.png)
+![Mobile version](https://i.ibb.co/R2smD9B/Mobile.png)
 
 # How to run the project
 
