@@ -14,50 +14,50 @@ then both the client and server should be running concurrently.
 # File structure
 
 ## Client-side
-* [apis/](./src/apis)
-  * [apis.js](./src/apis/apis.js)
-  * [index.js](./src/apis/index.js)
-* [components/](./src/components)
-  * [BorderBox.jsx](./src/components/BorderBox.jsx)
-  * [Button.jsx](./src/components/Button.jsx)
-  * [Header.jsx](./src/components/Header.jsx)
-  * [Input.jsx](./src/components/Input.jsx)
-  * [Typography.jsx](./src/components/Typography.jsx)
-  * [index.js](./src/components/index.js)
-* [pages/](./src/pages)
-  * [Home/](./src/pages/Home)
-    * [__test__/](./src/pages/Home/__test__)
-      * [Home.test.jsx](./src/pages/Home/__test__/Home.test.jsx)
-    * [components/](./src/pages/Home/components)
-      * [AnswerBox.jsx](./src/pages/Home/components/AnswerBox.jsx)
-      * [index.js](./src/pages/Home/components/index.js)
-    * [Home.jsx](./src/pages/Home/Home.jsx)
-    * [index.js](./src/pages/Home/index.js)
-  * [index.js](./src/pages/index.js)
-* [themes/](./src/themes)
-  * [index.js](./src/themes/index.js)
-  * [themes.js](./src/themes/themes.js)
-* [utils/](./src/utils)
-  * [formatter.js](./src/utils/formatter.js)
-  * [index.js](./src/utils/index.js)
-* [App.jsx](./src/App.jsx)
-* [index.css](./src/index.css)
-* [index.jsx](./src/index.jsx)
-* [setupTests.js](./src/setupTests.js)
-
+src/
+┣ apis/
+┃ ┣ apis.js
+┃ ┗ index.js
+┣ components/
+┃ ┣ BorderBox.jsx
+┃ ┣ Button.jsx
+┃ ┣ Header.jsx
+┃ ┣ Input.jsx
+┃ ┣ Typography.jsx
+┃ ┗ index.js
+┣ pages/
+┃ ┣ Home/
+┃ ┃ ┣ __test__/
+┃ ┃ ┃ ┗ Home.test.jsx
+┃ ┃ ┣ components/
+┃ ┃ ┃ ┣ AnswerBox.jsx
+┃ ┃ ┃ ┗ index.js
+┃ ┃ ┣ Home.jsx
+┃ ┃ ┗ index.js
+┃ ┗ index.js
+┣ themes/
+┃ ┣ index.js
+┃ ┗ themes.js
+┣ utils/
+┃ ┣ formatter.js
+┃ ┗ index.js
+┣ App.jsx
+┣ index.css
+┣ index.jsx
+┗ setupTests.js
 ## Server-side
 
-* [controllers/](./src/controllers)
-  * [password.js](./src/controllers/password.js)
-* [models/](./src/models)
-  * [Password.js](./src/models/Password.js)
-* [routes/](./src/routes)
-  * [password.js](./src/routes/password.js)
-* [utils/](./src/utils)
-  * [db.js](./src/utils/db.js)
-* [routes.js](./src/routes.js)
-* [server.js](./src/server.js)
-
+src/
+┣ controllers/
+┃ ┗ password.js
+┣ models/
+┃ ┗ Password.js
+┣ routes/
+┃ ┗ password.js
+┣ utils/
+┃ ┗ db.js
+┣ routes.js
+┗ server.js
 
 
 # Development Iteration
