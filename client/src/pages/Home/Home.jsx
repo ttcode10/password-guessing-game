@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-import { BorderBox, Button, Input, H2Text, P1Text } from '../components';
-import { colors } from '../themes';
-import { formatNumber } from '../utils';
-import { getHint, verifyAnswer } from '../apis';
+import { Button, Input, H2Text, P1Text } from '../../components';
+import { AnswerBox } from './components';
+import { colors } from '../../themes';
+import { formatNumber } from '../../utils';
+import { getHint, verifyAnswer } from '../../apis';
 
 const Home = () => {
   const [input, setInput] = useState('');
@@ -25,8 +26,8 @@ const Home = () => {
     e.preventDefault();
     try {
       const response = await verifyAnswer(hintText, input);
-      const { correct, hint, highlight, answer } = response;
-      setUserAttempt([...userAttempt, answer]);
+      const { correct, highlight, answer } = response;
+      setUserAttempt([...userAttempt, { answer, highlight, correct }]);
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +60,7 @@ const Home = () => {
         <Upper>
           <Input
             name="password"
-            placeholder="Type here and press ENTER..."
+            placeholder="Type UNIQUE DIGIT and press ENTER..."
             type="text"
             pattern="^[0-9]*$"
             value={input}
@@ -81,12 +82,13 @@ const Home = () => {
           <H2Text>User Attempts:</H2Text>
           {userAttempt &&
             userAttempt.map((item) => (
-              <BorderBox>
-                <Row>
-                  <H2Text>#{userAttempt.indexOf(item)+1}</H2Text>
-                  <P1Text loose>{item}</P1Text>
-                </Row>
-              </BorderBox>
+              <AnswerBox
+                key={item.answer}
+                tryNumber={userAttempt.indexOf(item) + 1}
+                pastAnswer={item.answer}
+                highlight={item.highlight}
+                correct={item.correct}
+              />
             ))}
         </Section>
       </Container>
