@@ -24,7 +24,7 @@ export const P1Text = styled.p`
   font-family: ${fontFamily};
   font-size: 1.125rem;
   font-weight: 500;
-  letter-spacing: ${(props) => props.loose ? '1rem' : 'normal'};
+  letter-spacing: ${(props) => (props.loose ? '1rem' : 'normal')};
 `;
 
 export const P2Text = styled.p`

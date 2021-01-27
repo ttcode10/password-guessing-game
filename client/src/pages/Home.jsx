@@ -1,41 +1,76 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { BorderBox, Button, Input, H2Text, P1Text } from '../components';
 import { colors } from '../themes';
+import { formatNumber } from '../utils';
 
-const Home = () => (
-  <>
-    <Container>
-      <Upper>
-        <Input placeholder="Type here..." />
-        <Row>
-          <H2Text>Hint</H2Text>
-          <P1Text loose>12345678</P1Text>
-        </Row>
-        <Row>
-          <Button>Clear</Button>
-          <Button primary>Submit</Button>
-        </Row>
-      </Upper>
-      <Section>
-        <H2Text>User Attempts:</H2Text>
-        <BorderBox>
+const Home = () => {
+  const [input, setInput] = useState('');
+
+  const handleChange = (e) => {
+    const formattedInput = formatNumber(e.target.value);
+    setInput(formattedInput);
+  };
+
+  const handleClear = (e) => {
+    e.preventDefault();
+    setInput('');
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const onKeyUp = (e) => {
+    if (e.keyCode === 13) {
+      handleSubmit(e);
+    }
+  };
+
+  return (
+    <>
+      <Container>
+        <Upper>
+          <Input
+            name="password"
+            placeholder="Type here..."
+            type="text"
+            pattern="^[0-9]*$"
+            value={input}
+            onChange={handleChange}
+            onKeyUp={onKeyUp}
+          />
           <Row>
-            <H2Text>#2</H2Text>
-            <P1Text loose>2342343</P1Text>
+            <H2Text>Hint</H2Text>
+            <P1Text loose>12345678</P1Text>
           </Row>
-        </BorderBox>
-        <BorderBox>
           <Row>
-            <H2Text>#1</H2Text>
-            <P1Text loose>2342343</P1Text>
+            <Button onClick={handleClear}>Clear</Button>
+            <Button primary onClick={handleSubmit}>
+              Submit
+            </Button>
           </Row>
-        </BorderBox>
-      </Section>
-    </Container>
-  </>
-);
+        </Upper>
+        <Section>
+          <H2Text>User Attempts:</H2Text>
+          <BorderBox>
+            <Row>
+              <H2Text>#2</H2Text>
+              <P1Text loose>2342343</P1Text>
+            </Row>
+          </BorderBox>
+          <BorderBox>
+            <Row>
+              <H2Text>#1</H2Text>
+              <P1Text loose>2342343</P1Text>
+            </Row>
+          </BorderBox>
+        </Section>
+      </Container>
+    </>
+  );
+};
 
 export default Home;
 
