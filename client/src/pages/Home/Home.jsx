@@ -66,6 +66,7 @@ const Home = () => {
             value={input}
             onChange={handleChange}
             onKeyUp={onKeyUp}
+            data-testid="input"
           />
           <Row>
             <H2Text>Hint</H2Text>
