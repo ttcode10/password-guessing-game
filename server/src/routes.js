@@ -1,6 +1,6 @@
 const express = require('express');
 
-const passwordRoute = require('./src/routes/password');
+const passwordRoute = require('./routes/password');
 
 const router = express.Router();
 
