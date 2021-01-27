@@ -1,5 +1,9 @@
 # Project preview
+
+Web version:
 ![Web version](https://i.ibb.co/yXkk2RG/Web.png)
+
+Mobile version:
 ![Mobile version](https://i.ibb.co/R2smD9B/Mobile.png)
 
 # How to run the project
