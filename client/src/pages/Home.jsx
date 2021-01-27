@@ -4,9 +4,12 @@ import styled from 'styled-components';
 import { BorderBox, Button, Input, H2Text, P1Text } from '../components';
 import { colors } from '../themes';
 import { formatNumber } from '../utils';
+import { getHint, verifyAnswer } from '../apis';
 
 const Home = () => {
   const [input, setInput] = useState('');
+  const [hintText, setHintText] = useState('');
+  const [userAttempt, setUserAttempt] = useState([]);
 
   const handleChange = (e) => {
     const formattedInput = formatNumber(e.target.value);
@@ -18,8 +21,16 @@ const Home = () => {
     setInput('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await verifyAnswer(hintText, input);
+      const { correct, hint, highlight, answer } = response;
+      setUserAttempt([...userAttempt, answer]);
+    } catch (error) {
+      console.log(error);
+    }
+    setInput('');
   };
 
   const onKeyUp = (e) => {
@@ -28,13 +39,27 @@ const Home = () => {
     }
   };
 
+  const getHintTextOnPageInit = async () => {
+    try {
+      const response = await getHint();
+      const { hint } = response;
+      setHintText(hint);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getHintTextOnPageInit();
+  }, []);
+
   return (
     <>
       <Container>
         <Upper>
           <Input
             name="password"
-            placeholder="Type here..."
+            placeholder="Type here and press ENTER..."
             type="text"
             pattern="^[0-9]*$"
             value={input}
@@ -43,7 +68,7 @@ const Home = () => {
           />
           <Row>
             <H2Text>Hint</H2Text>
-            <P1Text loose>12345678</P1Text>
+            <P1Text loose>{hintText}</P1Text>
           </Row>
           <Row>
             <Button onClick={handleClear}>Clear</Button>
@@ -54,18 +79,15 @@ const Home = () => {
         </Upper>
         <Section>
           <H2Text>User Attempts:</H2Text>
-          <BorderBox>
-            <Row>
-              <H2Text>#2</H2Text>
-              <P1Text loose>2342343</P1Text>
-            </Row>
-          </BorderBox>
-          <BorderBox>
-            <Row>
-              <H2Text>#1</H2Text>
-              <P1Text loose>2342343</P1Text>
-            </Row>
-          </BorderBox>
+          {userAttempt &&
+            userAttempt.map((item) => (
+              <BorderBox>
+                <Row>
+                  <H2Text>#{userAttempt.indexOf(item)+1}</H2Text>
+                  <P1Text loose>{item}</P1Text>
+                </Row>
+              </BorderBox>
+            ))}
         </Section>
       </Container>
     </>
